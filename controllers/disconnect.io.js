@@ -2,6 +2,7 @@ const Device = require('../models/Device');
 const logger = require('../lib/logger');
 
 module.exports = async socketId => {
+
   try {
 
     const query = { socketId };

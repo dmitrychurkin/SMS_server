@@ -17,13 +17,23 @@ module.exports = () => {
 
             } else if (device && typeof device === 'object') {
 
-                ctx.io
-                    .to(device.socketId)
+                const { socketId, connected } = device;
+
+                if (socketId && connected) {
+
+                    ctx.io
+                    .to(socketId)
                     .binary(false)
                     .volatile
                     .emit('message', body);
 
-                ctx.status = 200;
+                    ctx.status = 200;
+
+                }else {
+
+                    ctx.status = 403;
+
+                }
 
             }
 
