@@ -7,58 +7,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
   <script src="/socket.io/socket.io.js"></script>
-  <title>Hello, world!</title>
+  <title>Development</title>
 </head>
 
-<body>
-  <h1>Hello, world!</h1>
-
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+<body style="text-align: center">
+  <h1>Test socket connection</h1>
+  <h2>Your test device ID is <b id="deviceId">ad3432fdfs123vm</b></h2>
+  <h5>Press F12 to open developer console</h5>
+  <h6>Use Postman to POST data { n: String, m: String } on URL /api/resource/:device_id</h6>
   <script>
-
-    /*const socket = io();
+    const consoleStyles = 'background: #222; color: #bada55; font-size: 20px';
+    const TEST_ID = document.getElementById('deviceId');
+    const { protocol, hostname, port } = location;
+    const socket = io(`${protocol}//${hostname}${port ? `:${port}` : ''}`, { query: `id=${TEST_ID.innerHTML}` });
 
     socket.on('connect', () => {
-      console.log('socket.id => ', socket.id);
-      socket.emit('device:info', {
-        phoneNumber: '+380684713966',
-        deviceId: 'ad3432fdfs123vm'
-      });
-
-      socket.on('message', message => console.log('message arrived => ', message));
+      console.log(`%c Your current socket ID for this connection is => ${socket.id}`, consoleStyles);
+      socket.on('message', message => console.log(`%c Message arrived => ${JSON.stringify(message)}`, consoleStyles));
     });
-
-    setTimeout(() =>
-      fetch('/api/resource/ad3432fdfs123vm', {
-        method: 'post',
-        cache: 'no-cache',
-        mode: 'same-origin',
-        redirect: 'error',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          num: '+380684713966',
-          mes: 'Hello World'
-        })
-      })
-        .then(console.log)
-        .catch(console.error)
-      , 5000);*/
-
   </script>
 </body>
 
