@@ -1,11 +1,13 @@
-const mongoose = require('mongoose');
+const { model, Schema } = require('mongoose');
 
-module.exports = mongoose.model('Device', new mongoose.Schema({
+module.exports = model('Device', new Schema({
   deviceId: {
     unique: true,
     type: String,
     trim: true,
     maxlength: 100,
     required: true
-  }
+  },
+  socketId: String,
+  connected: Boolean
 }));
